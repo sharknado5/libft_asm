@@ -14,5 +14,5 @@ _main:
 
 section .data
     msg:    db 'Hello, World!', 10
-    .len:   equ $ - msg
+    .len:   equ $ - msg 
 
