@@ -1,4 +1,4 @@
-section .text
+section .text			;must be declared for using gcc
 	global ft_bzero
 
 ft_bzero:

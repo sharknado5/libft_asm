@@ -8,7 +8,8 @@ MAC_FLAG = -f macho64 --prefix _
 
 LINUX_FLAG = -f elf64
 
-LIBSRC = ft_bzero.s ft_strcat.s
+LIBSRC = ft_bzero.s ft_strcat.s ft_isalpha.s ft_isdigit.s ft_isalnum.s \
+			ft_isascii.s
 
 LIBOBJ = $(LIBSRC:.s=.o)
 
@@ -20,8 +21,8 @@ all: $(NAME)
 $(NAME): $(LIBOBJ)
 	$(CC) -c $(SRC)
 	ar rcs $(NAME) $(LIBOBJ)
+	ranlib $(NAME)
 	$(CC) -o asm_main $(NAME) $(OBJ) -I libfts.h
-	# ld $(OBJ) -macosx_version_min 10.12 -lSystem
 
 %.o: %.s
 	$(NASM) $(MAC_FLAG) $< 

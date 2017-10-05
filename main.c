@@ -3,7 +3,7 @@
 
 void    test_bzero(void)
 {
-    printf("ft_bzero test\n");
+    printf("\n\nFT_BZERO TEST\n\n");
     
         char test1[] = "1234567890";
         char test2[] = "";
@@ -19,18 +19,94 @@ void    test_bzero(void)
     
         printf("After test1 : |%s|\n", test1);
         printf("After test2 : |%s|\n", test2);
-        printf("After test3 : |%s|\n", test3);     
+        printf("After test3 : |%s|\n\n", test3);     
 }
 
 void    test_strcat(void)
 {
-    
+    printf("FT_STRCAT TEST\n\n");
+
+    char buf[1024];
+    ft_bzero(buf, 1024);
+
+    ft_strcat(buf, "first cat_");    
+    printf("%s\n", buf);
+    ft_strcat(buf, "2nd cat_");
+    printf("%s\n", buf);
+    ft_strcat(buf, "final cat");
+    printf("%s\n\n", buf);
+}
+
+void    test_isalpha()
+{
+    printf("FT_ISALPHA TEST\n\n");
+    char *test_alpha = "a1B2c3D4#x^Y+z!";
+    printf("Original str: %s\n'1' IS alpha, '0' is NOT alpha\n", test_alpha);
+    while (*test_alpha)
+    {
+        printf("%c = %d\n", *test_alpha, ft_isalpha(*test_alpha));
+        test_alpha++;
+    }
+    printf("\n\n");
+}
+
+void    test_isdigit()
+{
+    printf("FT_ISDIGIT TEST\n\n");
+
+    char *test_digit = "a1B2c3D4^5&6*7(8)9X0!";
+    printf("Original str: %s\n'1' IS digit, '0' is NOT digit\n", test_digit);
+    while (*test_digit)
+    {
+        printf("%c = %d\n", *test_digit, ft_isdigit(*test_digit));
+        test_digit++;
+    }
+    printf("\n\n");
+}
+
+void    test_isalnum()
+{
+    printf("FT_ISALNUM TEST\n\n");
+
+    char *test_alnum = "a1#B2$c3+D4^5&6";
+    printf("Original str: %s\n'1' IS alnum, '0' is NOT alnum\n", test_alnum);
+    while (*test_alnum)
+    {
+        printf("%c = %d\n", *test_alnum, ft_isalnum(*test_alnum));
+        test_alnum++;
+    }
+    printf("\n\n");
+}
+
+void    test_isascii()
+{
+    printf("FT_ISASCII TEST\n\n");
+
+    int c1, c2, c3, c4, c5, c6;
+    c1 = 'a';
+    c2 = '5';
+    c3 = '&';
+    c4 = 201;
+    c5 = -40;
+    c6 = 0;
+
+    printf("Value: %d = %d\n", c1, ft_isascii(c1));
+    printf("Value: %d = %d\n", c2, ft_isascii(c2));
+    printf("Value: %d = %d\n", c3, ft_isascii(c3));
+    printf("Value: %d = %d\n", c4, ft_isascii(c4));
+    printf("Value: %d = %d\n", c5, ft_isascii(c5));
+    printf("Value: %d = %d\n", c6, ft_isascii(c6));
+    printf("\n\n");
 }
 
 int     main(void)
 {   
     test_bzero();
     test_strcat();
+    test_isalpha();
+    test_isdigit();
+    test_isalnum();
+    test_isascii();
 
     return (0);
 }
