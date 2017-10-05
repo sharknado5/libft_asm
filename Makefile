@@ -4,21 +4,31 @@ NASM = nasm
 
 CC = gcc
 
-MAC_FLAG = -f macho64
+MAC_FLAG = -f macho64 --prefix _
 
 LINUX_FLAG = -f elf64
 
-SRC = ft_bzero.s
+LIBSRC = ft_bzero.s ft_strcat.s
 
-OBJ = $(SRC:.s=.o)
+LIBOBJ = $(LIBSRC:.s=.o)
 
-all:
-	$(NASM) $(MAC_FLAG) $(SRC) -o $(OBJ)
-	ld $(OBJ) -macosx_version_min 10.8 -lSystem
+SRC = main.c
+
+OBJ = main.o
+
+all: $(NAME)
+$(NAME): $(LIBOBJ)
+	$(CC) -c $(SRC)
+	ar rcs $(NAME) $(LIBOBJ)
+	$(CC) -o asm_main $(NAME) $(OBJ) -I libfts.h
+	# ld $(OBJ) -macosx_version_min 10.12 -lSystem
+
+%.o: %.s
+	$(NASM) $(MAC_FLAG) $< 
 
 linux:
 	$(NASM) $(LINUX_FLAG) $(SRC) -o $(OBJ)
 	ld $(OBJ)
 
 clean:
-	rm -f *.o
+	rm -f $(LIBOBJ)
