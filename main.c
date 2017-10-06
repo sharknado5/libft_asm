@@ -99,6 +99,92 @@ void    test_isascii()
     printf("\n\n");
 }
 
+void    test_isprint()
+{
+    int b1, b2, b3, b4, b5, b6;
+    b1 = '$';
+    b2 = '(';
+    b3 = 'W';
+    b4 = 42;
+    b5 = 127;
+    b6 = 0;
+    printf("FT_ISPRINT TEST\n\n");
+    printf("Value: %d = %d\n", b1, ft_isprint(b1));
+    printf("Value: %d = %d\n", b2, ft_isprint(b2));
+    printf("Value: %d = %d\n", b3, ft_isprint(b3));
+    printf("Value: %d = %d\n", b4, ft_isprint(b4));
+    printf("Value: %d = %d\n", b5, ft_isprint(b5));
+    printf("Value: %d = %d\n", b6, ft_isprint(b6));
+    printf("\n\n");
+    
+}
+
+void    test_toupper()
+{
+    printf("FT_TOUPPER TEST\n\n");
+    int i = 60;
+
+    while (i < 128)
+    {
+        printf("%c toupper = %c\n", i, ft_toupper(i));
+        i++;
+    }
+    printf("\n\n");
+}
+
+void    test_tolower()
+{
+    printf("FT_TOLOWER TEST\n\n");
+    int i = 60;
+
+    while (i < 128)
+    {
+        printf("%c tolower = %c\n", i, ft_tolower(i));
+        i++;
+    }
+    printf("\n\n");
+}
+
+// void    test_putc()
+// {
+//     printf("FT_PUTC TEST\n\n");
+//     ft_putc('(');
+//     ft_putc('\'');
+//     ft_putc('_');
+//     ft_putc('\'');
+//     ft_putc(')');
+//     printf("\n\n");
+// }
+
+void    test_puts()
+{
+    printf("FT_PUTS TEST\n\n");
+    ft_puts("I used\n");
+    ft_puts("assembly to write\n");
+    ft_puts("a putstr().\n");
+    ft_puts("Yipeekayayh motherfucker!\n");
+    printf("\n\n");
+}
+
+void    test_strlen()
+{
+    int len = 0;
+    char lenstr[] = "0123456789";
+    char lenstr2[] = "0123456789qwertyuiopasdfghjklzxcvbnm";
+    char nullstr[] = "";
+    printf("FT_STRLEN TEST\n\n");
+    len = ft_strlen(lenstr);
+    printf("str: %s | strlen of str: %d\n", lenstr, len);
+
+    len = ft_strlen(lenstr2);
+    printf("str: %s | strlen of str: %d\n", lenstr2, len);
+
+    len = ft_strlen(nullstr);
+    printf("strlen of nullstr: %d\n", len);
+    
+    printf("\n\n");
+}
+
 int     main(void)
 {   
     test_bzero();
@@ -107,6 +193,11 @@ int     main(void)
     test_isdigit();
     test_isalnum();
     test_isascii();
+    test_isprint();
+    test_toupper();
+    test_tolower();
+    test_puts();
+    test_strlen();
 
     return (0);
 }
