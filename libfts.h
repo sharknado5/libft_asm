@@ -16,7 +16,7 @@ int     ft_isprint(int c);
 int     ft_toupper(int c);
 int     ft_tolower(int c);
 // void    ft_putc(char c);
-// void    ft_puts(char *str);
+void    ft_puts(char *str);
 int     ft_strlen(char *str);
 
 #endif

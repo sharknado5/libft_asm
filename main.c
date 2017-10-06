@@ -158,12 +158,12 @@ void    test_tolower()
 
 void    test_puts()
 {
-    printf("FT_PUTS TEST\n\n");
-    ft_puts("I used\n");
-    ft_puts("assembly to write\n");
-    ft_puts("a putstr().\n");
-    ft_puts("Yipeekayayh motherfucker!\n");
-    printf("\n\n");
+    write(1, "FT_PUTS TEST\n\n", ft_strlen("FT_PUTS TEST\n\n"));
+    ft_puts("I used");
+    ft_puts("assembly to write");
+    ft_puts("a putstr().");
+    ft_puts("Yipeekayayh motherfucker!");
+    write(1, "\n\n", 2);
 }
 
 void    test_strlen()
