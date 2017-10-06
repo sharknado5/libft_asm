@@ -3,8 +3,9 @@ section .text
 
 _ft_memset:
 	push rdi
-	mov rcx, rdx
-	mov rax, rsi
+	mov rcx, rdx ;Data Register (DX). Arithmetic and I/O operations
+				;Counter Register (CX). Used in shift/rotate instructions and loops
+	mov rax, rsi ; Source Index Register (SI). Used as Pointer to source in stream operation
 	rep stosb
 	pop rax
 	ret

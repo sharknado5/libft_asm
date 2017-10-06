@@ -185,6 +185,29 @@ void    test_strlen()
     printf("\n\n");
 }
 
+void    test_memset()
+{
+    printf("FT_MEMSET TEST\n\n");
+    char buf[1024];
+    while (*buf)
+    {
+        *buf = 'A';
+        buf++;
+    }
+
+    printf("str1 before memset: %s\n", buf);
+    // printf("str2 before memset: %s\n", memset2);
+    // printf("str3 before memset: %s\n", memset3);
+
+    ft_memset(buf, 42, 1024);
+    // ft_memset(memset2, 42, ft_strlen(memset2));
+    // ft_memset(memset3, 42, ft_strlen(memset3));
+
+    printf("str1 after memset: %s\n", buf);
+    // printf("str2 after memset: %s\n", memset2);
+    // printf("str3 after memset: %s\n", memset3);
+}
+
 int     main(void)
 {   
     test_bzero();
@@ -198,6 +221,7 @@ int     main(void)
     test_tolower();
     test_puts();
     test_strlen();
+    test_memset();
 
     return (0);
 }
