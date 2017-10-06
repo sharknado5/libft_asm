@@ -7,11 +7,12 @@ section .text
 
 ; void *memset(void *b, int c, size_t len);
 ft_memset:
-    mov     r10, rax
-    mov     rdx, rcx
-    mov     al, sil
+    mov r10, rax
+    mov rdx, rcx
+    mov al, sil
     jmp stock
     jmp end
+    
 stock:
     cld
     rep stosb
