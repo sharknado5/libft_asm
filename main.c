@@ -216,6 +216,27 @@ void    test_memset()
     printf("\n\n");
 }
 
+void    test_memcpy()
+{
+    printf("FT_MEMCPY TEST\n\n");
+    char mcsrc[] = "Sarel die seeslak hou van swem";
+    char mcdest[] = "Gewilde Gawie gril vir gomtorre!";
+    // char mcr1[128];
+    // char mcr2[128];
+    
+    printf("source: %s\n", mcsrc);
+    printf("dest  : %s\n", mcdest);
+
+    // ft_bzero(mcr1, 128);
+    // ft_bzero(mcr2, 128);
+    ft_memcpy(mcdest, mcsrc, ft_strlen(mcsrc) - 4);
+    // ft_memcpy(mcr2, mc2, ft_strlen(mc2));
+
+    printf("result: %s\n", mcdest);
+
+    printf("\n\n");
+}
+
 int     main(void)
 {   
     test_bzero();
@@ -230,6 +251,7 @@ int     main(void)
     test_puts();
     test_strlen();
     test_memset();
+    test_memcpy();
 
     return (0);
 }

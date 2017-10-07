@@ -4,7 +4,7 @@ NASM = nasm
 
 EXECUTABLE = asm_tests
 
-CC = clang
+CC = gcc
 
 MAC_FLAG = -f macho64 --prefix _
 
@@ -27,8 +27,16 @@ $(NAME): $(LIBOBJ)
 	ranlib $(NAME)
 	$(CC) -o $(EXECUTABLE) $(OBJ) $(NAME) -I libfts.h # if compilation error on mac... swap OBJ and NAME
 
+# OS := $(shell uname)
+# ifeq $(OS) Darwin
 %.o: %.s
-	$(NASM) $(LINUX_FLAG) $<
+	$(NASM) $(MAC_FLAG) $<
+# Run MacOS commands 
+# else
+# %.o: %.s
+	# $(NASM) $(LINUX_FLAG) $<
+	# check for Linux and run other commands
+# endif
 
 # linux: $(NAME)
 # $(NAME): $(LIBOBJ)
