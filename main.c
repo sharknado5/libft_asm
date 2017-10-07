@@ -188,24 +188,32 @@ void    test_strlen()
 void    test_memset()
 {
     printf("FT_MEMSET TEST\n\n");
-    char buf[1024];
-    while (*buf)
+    const int bufsize = 128; // removing const causes seg fault in test... wonder why?
+    char buf[bufsize];
+    char ms1[] = "Sannie sleep sewe sakke sout";
+    int  i_memset = 0;
+    
+    while (i_memset < bufsize)
     {
-        *buf = 'A';
-        buf++;
+        buf[i_memset] = 'A';
+        i_memset++;
     }
 
     printf("str1 before memset: %s\n", buf);
+    printf("str2 before memset: %s\n\n", ms1);
     // printf("str2 before memset: %s\n", memset2);
     // printf("str3 before memset: %s\n", memset3);
 
-    ft_memset(buf, 42, 1024);
+    ft_memset(buf, 42, bufsize);
+    ft_memset(ms1, 42, 7);
     // ft_memset(memset2, 42, ft_strlen(memset2));
     // ft_memset(memset3, 42, ft_strlen(memset3));
 
-    printf("str1 after memset: %s\n", buf);
+    printf("str1 after memset : %s\n", buf);
+    printf("str1 after memset : %s\n", ms1);
     // printf("str2 after memset: %s\n", memset2);
     // printf("str3 after memset: %s\n", memset3);
+    printf("\n\n");
 }
 
 int     main(void)

@@ -2,7 +2,9 @@ NAME = libfts.a
 
 NASM = nasm
 
-CC = gcc
+EXECUTABLE = asm_tests
+
+CC = clang
 
 MAC_FLAG = -f macho64 --prefix _
 
@@ -23,14 +25,20 @@ $(NAME): $(LIBOBJ)
 	$(CC) -c $(SRC)
 	ar rcs $(NAME) $(LIBOBJ)
 	ranlib $(NAME)
-	$(CC) -o asm_main $(NAME) $(OBJ) -I libfts.h
+	$(CC) -o $(EXECUTABLE) $(OBJ) $(NAME) -I libfts.h # if compilation error on mac... swap OBJ and NAME
 
 %.o: %.s
-	$(NASM) $(MAC_FLAG) $< 
+	$(NASM) $(LINUX_FLAG) $<
 
-linux:
-	$(NASM) $(LINUX_FLAG) $(SRC) -o $(OBJ)
-	ld $(OBJ)
+# linux: $(NAME)
+# $(NAME): $(LIBOBJ)
+# 	$(CC) -c $(SRC)
+# 	ar rcs $(NAME) $(LIBOBJ)
+# 	ranlib $(NAME)
+# 	$(CC) -o $(EXECUTABLE) $(NAME) $(OBJ) -I libfts.h
+
+# %.o: %.s
+# 	$(NASM) $(LINUX_FLAG) $<
 
 clean:
 	rm -f asm_main $(LIBOBJ)
