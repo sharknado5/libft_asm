@@ -253,31 +253,60 @@ void    test_strdup()
 {
     char sd1[] = "This is the original string. Keep your eye on it (\"_\")";
     char *sd2;
+    char sdempty[] = "";
+    char *sd3;
 
-    printf("Original: %s\n", sd1);
+    printf("Original1: %s\n", sd1);
+    printf("Original2: %s\n(HINT: its empty ('_') )\n", sdempty);
     // int  len = ft_strlen(sd1);
     sd2 = ft_strdup(sd1);
+    sd3 = ft_strdup(sdempty);
 
-    printf("Duplicate: %s\n", sd2);
+    printf("Duplicate1: %s\n", sd2);
+    printf("Duplicate2: %s\n(still empty neh?)\n", sd3);
     printf("\n\n");
 }
 
-int     main(void)
+int     main(int ac, char **av)
 {   
-    test_bzero();
-    test_strcat();
-    test_isalpha();
-    test_isdigit();
-    test_isalnum();
-    test_isascii();
-    test_isprint();
-    test_toupper();
-    test_tolower();
-    test_puts();
-    test_strlen();
-    test_memset();
-    test_memcpy();
-    test_strdup();
+    if (ac == 2)
+    {
+        int ret = 0;
+        if (ac == 1) {
+            ft_cat(0);
+        }
+        else if (ac == 2) {
+            int fd = open(av[1], O_RDONLY);
+            ret = ft_cat(fd);
+            if (fd != -1) {
+                close(fd);
+            } else {
+                printf("error\n");
+            }
+        }
+        else {
+            printf("usage: %s [file]\n", av[0]);
+        }
+        return (ret);
+    }
+    else if (ac == 1)
+    {
+        test_bzero();
+        test_strcat();
+        test_isalpha();
+        test_isdigit();
+        test_isalnum();
+        test_isascii();
+        test_isprint();
+        test_toupper();
+        test_tolower();
+        test_puts();
+        test_strlen();
+        test_memset();
+        test_memcpy();
+        test_strdup();
+        return (0);
+    }    
 
-    return (0);
+    
 }
