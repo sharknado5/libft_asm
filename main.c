@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lkoekemo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/07 23:23:04 by lkoekemo          #+#    #+#             */
+/*   Updated: 2017/10/07 23:23:06 by lkoekemo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libfts.h"
 
 
@@ -237,6 +249,19 @@ void    test_memcpy()
     printf("\n\n");
 }
 
+void    test_strdup()
+{
+    char sd1[] = "This is the original string. Keep your eye on it (\"_\")";
+    char *sd2;
+
+    printf("Original: %s\n", sd1);
+    // int  len = ft_strlen(sd1);
+    sd2 = ft_strdup(sd1);
+
+    printf("Duplicate: %s\n", sd2);
+    printf("\n\n");
+}
+
 int     main(void)
 {   
     test_bzero();
@@ -252,6 +277,7 @@ int     main(void)
     test_strlen();
     test_memset();
     test_memcpy();
+    test_strdup();
 
     return (0);
 }

@@ -12,5 +12,38 @@
 
 section .text
 	global ft_strdup
+    extern ft_strlen
+    extern ft_memcpy
+    extern malloc
 
 ft_strdup:
+    push    rbp
+    mov     rbp, rsp
+    jmp     main
+
+main:
+    cmp     rdi, 0  ;check if rdi is 0
+    je      ret0 
+    mov     rax, 0  
+    push    rdi     ;push arg to stack
+    call    ft_strlen; get len of rdi
+    push    rax;    push rax value to top of stack;
+    ;stack is as follows    |top| 
+    mov     rdi, rax    ;value of strlen is now 1st arg of malloc
+    call    malloc
+    cmp     rax, 0  ;if !malloc return
+    je      ret0
+    mov     rdi, rax;move new mem to 1st param
+    pop     rdx
+    pop     rsi
+    call    ft_memcpy
+    jmp     return
+    
+return:
+    mov     rsp, rbp
+    pop     rbp
+    ret
+
+ret0:
+    mov     rax, 0
+    ret

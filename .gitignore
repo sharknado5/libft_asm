@@ -1,2 +1,5 @@
-libft/*
+libft/
 *.o
+gk_libasm/
+libasm_sadus/
+hello_tut/
