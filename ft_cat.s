@@ -24,7 +24,7 @@ main:
 ;ssize_t     write(int fildes, const void *buf, size_t nbyte);
     mov rdi, 1 ; fd to write to
     mov rdx, rax ; amount of bytes read 
-    mov rax, 0x2000004
+    mov rax, 0x2000004 ; WRITE syscall
     syscall
     jc return
     pop rdi

@@ -26,38 +26,13 @@ $(NAME): $(LIBOBJ)
 	$(CC) -c $(SRC)
 	ar rcs $(NAME) $(LIBOBJ)
 	ranlib $(NAME)
-	$(CC) -o $(EXECUTABLE) $(OBJ) $(NAME) -I libfts.h # if compilation error on mac... swap OBJ and NAME
+	$(CC) -o $(EXECUTABLE) $(OBJ) $(NAME) -I libfts.h
 
-# ft_cat: $(NAME)
-# $(NAME): $(LIBOBJ)
-# 	$(CC) -c main_cat.c
-# 	ar rcs $(NAME) $(LIBOBJ)
-# 	ranlib $(NAME)
-# 	$(CC) -o cat_test main_cat.o $(NAME) -I libfts.h
-# OS := $(shell uname)
-# ifeq $(OS) Darwin
 %.o: %.s
 	$(NASM) $(MAC_FLAG) $<
-# Run MacOS commands 
-# else
-# %.o: %.s
-	# $(NASM) $(LINUX_FLAG) $<
-	# check for Linux and run other commands
-# endif
-
-# linux: $(NAME)
-# $(NAME): $(LIBOBJ)
-# 	$(CC) -c $(SRC)
-# 	ar rcs $(NAME) $(LIBOBJ)
-# 	ranlib $(NAME)
-# 	$(CC) -o $(EXECUTABLE) $(NAME) $(OBJ) -I libfts.h
-
-# %.o: %.s
-# 	$(NASM) $(LINUX_FLAG) $<
-
 
 clean:
-	rm -f asm_main $(LIBOBJ)
+	rm -f asm_main $(LIBOBJ) $(OBJ)
 
 fclean: clean
 	rm -f $(NAME) 
