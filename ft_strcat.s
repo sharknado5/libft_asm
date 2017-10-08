@@ -14,8 +14,6 @@ section .text
     global ft_strcat
 
 ft_strcat:
-    ; push	rbp
-	; mov		rbp, rsp       - CREATES SEGFAULT
     mov r8, rdi
     cmp byte[rdi], 0
     je copy_s2

@@ -28,10 +28,9 @@ main:
     push    rdi     ;push arg to stack
     call    ft_strlen; get len of rdi
     push    rax;    push rax value to top of stack;
-    ;stack is as follows    |top| 
     mov     rdi, rax    ;value of strlen is now 1st arg of malloc
     call    malloc
-    cmp     rax, 0  ;if !malloc return
+    cmp     rax, 0  ;if !malloc, return err
     je      ret0
     mov     rdi, rax;move new mem to 1st param
     pop     rdx

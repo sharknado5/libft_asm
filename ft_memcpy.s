@@ -17,6 +17,6 @@ section .text
 ft_memcpy:
     push rdi
     mov rcx, rdx
-    rep movsb
+    rep movsb; The MOVS command copies data from DS:(SI/ESI/RSI) to ES:(DI/EDI/RDI)
     pop rax
     ret
